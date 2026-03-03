@@ -47,14 +47,11 @@ from agents.tools.base import JustInTimeToolingBase
 
 
 class EchoReasoner(BaseReasoner):
-    def __init__(self, *, llm: BaseLLM, tools: JustInTimeToolingBase, memory: MutableMapping):
-        super().__init__(llm=llm, tools=tools, memory=memory)
-
     def run(self, goal: str) -> ReasoningResult:
         # Minimal run loop: ask model once, return structured result.
-        response = self.llm.invoke(f"Goal: {goal}\nProvide a concise final answer.")
+        response = self.llm.prompt(f"Goal: {goal}\nProvide a concise final answer.")
         return ReasoningResult(
-            final_answer=str(response),
+            final_answer=response,
             iterations=1,
             tool_calls=[],
             success=True,
