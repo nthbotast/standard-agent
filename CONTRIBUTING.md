@@ -40,10 +40,7 @@ We also encourage contributions of entirely new `BaseReasoner` implementations t
 Below is a minimal (but complete) `BaseReasoner` implementation you can use as a starting point:
 
 ```python
-from collections.abc import MutableMapping
 from agents.reasoner.base import BaseReasoner, ReasoningResult
-from agents.llm.base_llm import BaseLLM
-from agents.tools.base import JustInTimeToolingBase
 
 
 class EchoReasoner(BaseReasoner):
